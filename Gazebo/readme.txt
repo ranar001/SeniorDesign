@@ -2,8 +2,8 @@
 
 Goals:
 Build our flowchart of interactions through all subsystems
-Build a world
-Bulid a cart
+Build a world/import objects to pick
+Bulid a cart/import cart
 Build arm/import arm/document arm/build functions/build layers of abstraction
 Connect arm to cart
 Connect camera to arm
