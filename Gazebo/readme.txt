@@ -1,6 +1,7 @@
 
 
 Goals:
+Build our flowchart of interactions through all subsystems
 Build a world
 Bulid a cart
 Build arm/import arm/document arm/build functions/build layers of abstraction
