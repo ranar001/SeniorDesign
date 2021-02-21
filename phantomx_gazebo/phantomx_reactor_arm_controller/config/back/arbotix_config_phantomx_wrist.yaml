@@ -1,0 +1,17 @@
+# Config file for PhantomX Reactor
+port: /dev/ttyUSB_REACTOR
+read_rate: 25
+write_rate: 25
+joints: {
+    base_link_shoulder_link_joint: {id: 1, max_speed: 50.0},
+    shoulder_link_bicep_link_joint: {id: 2, max_speed: 50.0},
+    bicep_link_forearm_link_joint: {id: 5, max_speed: 50.0},
+    forearm_link_wrist_1_link_joint: {id: 6, max_speed: 50.0, invert: true},
+    wrist_1_link_wrist_2_link_joint: {id: 7, max_speed: 50.0},
+    gripper_revolute_joint: {id: 8, max_speed: 100.0, range: 180, min_angle: -90.0, max_angle: 0},
+}
+
+#
+# Be carefull with dependency of j2-j3 and j4-j5!!!
+# Use the node phantomx_reactor_parallel_motor_joints.py for that purpose
+#
