@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<robot name="phantomx_reactor_arm" xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+
+        <link name="world"/>
+
+        <!-- Stand --><!--
+        <link name="stand">
+          <inertial>
+              <mass value="1000" />
+              <origin xyz="0 0 0.5" rpy="0 0 0" />
+              <inertia ixx="0.01" ixy="0" ixz="0" iyy="0.01" iyz="0" izz="0.01" />
+          </inertial>
+          <visual>
+              <origin xyz="0 0 0.5" rpy="0 0 0" />
+              <geometry>
+                  <cylinder length="1.0" radius="0.1" />
+              </geometry>
+          </visual>
+          <collision>
+              <origin xyz="0 0 0.5" rpy="0 0 0" />
+              <geometry>
+                  --><!-- <box size="0.2 0.2 1.0" /> --><!--
+                  <cylinder length="1.0" radius="0.1" />
+              </geometry>
+          </collision>
+        </link>
+
+        <joint name="fixed" type="fixed">
+          <parent link="world"/>
+          <child link="stand"/>
+        </joint>
+-->
+<!-- Import URDF xacro model -->
+        <xacro:include filename="$(find phantomx_reactor_arm_description)/urdf/phantomx_reactor_wrist_camera.urdf.xacro" />
+
+
+
+<!--        <joint name="stand_joint" type="fixed">
+          <parent link="stand" />
+          <child link = "base_footprint" />
+          <origin xyz="0.0 0.0 1.0" rpy="0.0 0.0 0.0" />
+        </joint>
+-->
+
+        <joint name="stand_joint" type="fixed">
+          <parent link="world" />
+          <child link = "base_footprint" />
+          <origin xyz="0.0 0.0 0.0" rpy="0.0 0.0 0.0" />
+        </joint>
+
+	<link name="base_footprint">
+		<visual>
+			<origin xyz="0 0 0" rpy="0 0 0"/>
+			<geometry>
+				<box size="0.001 0.001 0.001" />
+			</geometry>
+		</visual>
+	</link>
+        <xacro:phantomx_reactor_wrist prefix="" parent="base_footprint">
+		<origin xyz="0 0 0" rpy="0 0 0" />
+        </xacro:phantomx_reactor_wrist>
+
+
+  <!-- we need this to control objects in gazebo from outside -->
+  <!-- gazebo stuffs -->
+
+
+
+  <!-- Gazebo plugin -->
+        <gazebo>
+         <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+           <robotNamespace>/phantomx_reactor_arm</robotNamespace>
+           <robotSimType>gazebo_ros_control/DefaultRobotHWSim</robotSimType>
+           <legacyModeNS>true</legacyModeNS>
+         </plugin>
+        </gazebo>
+	
+</robot>
