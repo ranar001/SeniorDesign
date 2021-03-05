@@ -57,43 +57,6 @@ class Turtlebot():
 	    rospy.sleep(1)
             #self.run_point4()
 	    rospy.sleep(1)
-	    arm = InterbotixRobot(robot_name="rx150", mrd=mrd)
-	    arm.open_gripper(2)
-	    print("Start going to home")
-	    arm.go_to_home_pose()
-	    #arm.set_ee_pose_components(x=0.0, y=0.3, z=0.1)
-	    #x,y, and z position for cup x = 0, y = -0.3, z = 0.08
-	    x_pos = input("Enter the x-coordinate: ")
-	    y_pos = input("Enter the y-coordinate: ")
-	    z_pos = input("Enter the z-coordinate: ")
-	    print("Going to set points")
-	    arm.set_ee_pose_components(x_pos, y_pos, z_pos)
-	    close_open_gripper = input("Open or Close the Gripper? ")
-	    int_close_open_gripper = int(close_open_gripper)
-	    if int_close_open_gripper == 1:
-	        arm.close_gripper(2)
-	    elif int_close_open_gripper == 2:
-		arm.open_gripper(2)
-	    else:
-		print("Invalid")
-	    rospy.sleep(2)
-	    #print("Going to first")
-	    #arm.set_ee_pose_components(x=0.0, y=0.3, z=0.1)
-	    #rospy.sleep(2)
-	    #arm.open_gripper(2)
-	    #arm.close_gripper(2)
-	    #print("Going to second")
-	    arm.set_ee_pose_components(x=0.0, y=-0.3, z=0.08)
-	    #rospy.sleep(2)
-	    #arm.open_gripper(2)
-	    #print("Going to third")
-	    #arm.set_ee_pose_components(x=0.1, y=0.3, z=0.1)
-	    #rospy.sleep(2)
-	    arm.open_gripper(2)
-	    print("Back to sleep")
-	    #Want to go back home so that it can land safely when it sleeps
-	    arm.go_to_home_pose()
-	    arm.go_to_sleep_pose()
         except rospy.ROSInterruptException:
             rospy.loginfo("Action terminated.")
         finally:
